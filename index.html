@@ -145,14 +145,14 @@
             background: #fff; padding: 30px 20px; border-radius: 15px; 
             box-shadow: 0 5px 20px rgba(0,0,0,0.04); width: 380px; transition: transform 0.3s ease;
             display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-            contain: layout paint; /* Optimización: Contención CSS */
+            contain: layout paint;
         }
         .chart-wrapper:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .chart-wrapper h3 { color: var(--primary-color); font-size: 1.1rem; margin-bottom: 20px; min-height: 45px; display: flex; align-items: center; text-align: center; }
         .chart-canvas-container { width: 100%; height: 250px; position: relative; } 
 
-        /* Carrusel Infinito de Tarjetas Altamente Optimizado */
-        #tours-destacados { padding: 100px 20px; background-color: #fff; text-align: center; overflow: hidden; }
+        /* Carrusel Infinito de Tarjetas */
+        #tours-destacados { padding: 100px 20px 60px; background-color: #fff; text-align: center; overflow: hidden; }
         #tours-destacados h2 { margin-bottom: 20px; color: var(--primary-color); font-size: 2.8rem; }
         #tours-destacados > p { margin-bottom: 50px; font-size: 1.1rem; color: #666; }
         .cards-container { overflow: hidden; max-width: 1400px; margin: 0 auto; padding: 20px 0; contain: paint; }
@@ -194,6 +194,43 @@
         .cards-track .card { width: 380px; } 
         .tours-grid .card { width: 100%; } 
         .tours-grid .card img { height: 200px; }
+
+        /* Estilos de la nueva sección CTA hacia el catálogo */
+        .ver-catalogo-cta {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+        }
+        .ver-catalogo-cta p {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        .btn-cta-catalogo {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s, box-shadow 0.25s;
+            box-shadow: 0 4px 15px rgba(33, 78, 52, 0.2);
+        }
+        .btn-cta-catalogo:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+        .btn-cta-catalogo i {
+            margin-left: 8px;
+            transition: transform 0.2s;
+        }
+        .btn-cta-catalogo:hover i {
+            transform: translateX(5px);
+        }
 
         /* Comentarios y Contacto */
         #comentarios { padding: 100px 20px; max-width: 100%; background-color: var(--light-bg); text-align: center; }
@@ -411,7 +448,14 @@
                 </div>
                 <div class="cards-container reveal delay-1">
                     <div class="cards-track" id="cards-track">
-                        </div>
+                    </div>
+                </div>
+                
+                <div class="ver-catalogo-cta reveal">
+                    <p>¿Listo para explorar más aventuras? Tenemos el destino ideal para ti.</p>
+                    <button onclick="cambiarVista('vista-catalogo')" class="btn-cta-catalogo">
+                        Ver Catálogo Completo <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </div>
             </section>
 
@@ -464,7 +508,7 @@
             </section>
 
             <section class="tours-grid reveal delay-2 active" id="tours-grid">
-                </section>
+            </section>
         </div>
 
     </main>
@@ -575,7 +619,7 @@
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // OPTIMIZACIÓN CRÍTICA: Dejar de vigilar el nodo procesado
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, { threshold: 0.02 });
@@ -607,7 +651,7 @@
                 });
                 ticking = true;
             }
-        }, { passive: true }); // OPTIMIZACIÓN CRÍTICA: Previene bloqueos del hilo principal de renderizado
+        }, { passive: true });
 
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navLinks = document.getElementById('nav-links');
@@ -628,19 +672,19 @@
         function startTimer() { timer = setInterval(() => { slideIndex++; showSlides(slideIndex); }, 5000); }
         startTimer();
 
-        // 4. BASE DE DATOS DE TOURS
+        // 4. BASE DE DATOS DE TOURS - MODIFICADO CON IMÁGENES REALES Y EN ALTA RESOLUCIÓN DE CADA LUGAR/ACTIVIDAD
         const toursData = [
-            { id: 0, category: "naturaleza", categoryName: "Naturaleza", title: "Ruta de la Naturaleza", image: "https://picsum.photos/800/400?random=10", desc: "Escapa del ruido de la ciudad y adéntrate en los paisajes más verdes y puros.", duration: "6 horas", difficulty: "Baja - Media" },
-            { id: 1, category: "cultura", categoryName: "Cultura", title: "Pueblos Mágicos", image: "https://picsum.photos/800/400?random=11", desc: "Un recorrido cultural y gastronómico por las calles empedradas más pintorescas.", duration: "Día completo", difficulty: "Baja" },
-            { id: 2, category: "aventura", categoryName: "Aventura", title: "Rafting Extremo", image: "https://picsum.photos/800/400?random=12", desc: "Desciende por rápidos emocionantes en ríos de agua cristalina con instructores.", duration: "4 horas", difficulty: "Alta" },
-            { id: 3, category: "cultura", categoryName: "Cultura", title: "Ruta Arqueológica", image: "https://picsum.photos/800/400?random=13", desc: "Viaja en el tiempo. Visitaremos zonas arqueológicas y ruinas antiguas.", duration: "5 horas", difficulty: "Baja" },
-            { id: 4, category: "naturaleza", categoryName: "Naturaleza", title: "Avistamiento de Aves", image: "https://picsum.photos/800/400?random=14", desc: "Recorrido matutino en silencio por la reserva natural. Incluye binoculares.", duration: "3 horas", difficulty: "Baja" },
-            { id: 5, category: "aventura", categoryName: "Aventura", title: "Escalada en Roca", image: "https://picsum.photos/800/400?random=15", desc: "Conquista las paredes de piedra natural más impresionantes.", duration: "6 horas", difficulty: "Alta" },
-            { id: 7, category: "naturaleza", categoryName: "Naturaleza", title: "Senderismo Nocturno", image: "https://picsum.photos/800/400?random=17", desc: "Camina bajo las estrellas guiado por expertos, aprende sobre constelaciones.", duration: "3 horas", difficulty: "Media" },
-            { id: 8, category: "paises", categoryName: "Países - Francia", title: "Luces y Arte de París", image: "https://picsum.photos/800/400?random=20", desc: "Camina por la mítica Torre Eiffel, navega el Sena y adéntrate en las obras maestras del Museo del Louvre.", duration: "7 Días", difficulty: "Baja" },
-            { id: 9, category: "paises", categoryName: "Países - Italia", title: "Esplendores de Roma y Toscana", image: "https://picsum.photos/800/400?random=21", desc: "Un viaje al corazón del Imperio Romano y los deslumbrantes horizontes cubiertos de viñedos en la Toscana.", duration: "8 Días", difficulty: "Baja" },
-            { id: 10, category: "paises", categoryName: "Países - Japón", title: "Contrastes de Tokio y Kioto", image: "https://picsum.photos/800/400?random=22", desc: "Descubre templos ancestrales rodeados de misticismo junto a la vanguardia tecnológica del distrito de Shibuya.", duration: "10 Días", difficulty: "Media" },
-            { id: 11, category: "paises", categoryName: "Países - México", title: "Maravillas de México", image: "https://picsum.photos/800/400?random=23", desc: "Descubre la rica historia de las culturas prehispánicas, pasea por pueblos coloridos y relájate en playas turquesas.", duration: "9 Días", difficulty: "Baja - Media" }
+            { id: 0, category: "naturaleza", categoryName: "Naturaleza", title: "Ruta de la Naturaleza", image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop", desc: "Escapa del ruido de la ciudad y adéntrate en los paisajes más verdes y puros.", duration: "6 horas", difficulty: "Baja - Media" },
+            { id: 1, category: "cultura", categoryName: "Cultura", title: "Pueblos Mágicos", image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=800&auto=format&fit=crop", desc: "Un recorrido cultural y gastronómico por las calles empedradas más pintorescas.", duration: "Día completo", difficulty: "Baja" },
+            { id: 2, category: "aventura", categoryName: "Aventura", title: "Rafting Extremo", image: "https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=800&auto=format&fit=crop", desc: "Desciende por rápidos emocionantes en ríos de agua cristalina con instructores.", duration: "4 horas", difficulty: "Alta" },
+            { id: 3, category: "cultura", categoryName: "Cultura", title: "Ruta Arqueológica", image: "https://images.unsplash.com/photo-1512813583145-baaa340ef29f?w=800&auto=format&fit=crop", desc: "Viaja en el tiempo. Visitaremos zonas arqueológicas y ruinas antiguas.", duration: "5 horas", difficulty: "Baja" },
+            { id: 4, category: "naturaleza", categoryName: "Naturaleza", title: "Avistamiento de Aves", image: "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=800&auto=format&fit=crop", desc: "Recorrido matutino en silencio por la reserva natural. Incluye binoculares.", duration: "3 horas", difficulty: "Baja" },
+            { id: 5, category: "aventura", categoryName: "Aventura", title: "Escalada en Roca", image: "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800&auto=format&fit=crop", desc: "Conquista las paredes de piedra natural más impresionantes.", duration: "6 horas", difficulty: "Alta" },
+            { id: 7, category: "naturaleza", categoryName: "Naturaleza", title: "Senderismo Nocturno", image: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?w=800&auto=format&fit=crop", desc: "Camina bajo las estrellas guiado por expertos, aprende sobre constelaciones.", duration: "3 horas", difficulty: "Media" },
+            { id: 8, category: "paises", categoryName: "Países - Francia", title: "Luces y Arte de París", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&auto=format&fit=crop", desc: "Camina por la mítica Torre Eiffel, navega el Sena y adéntrate en las obras maestras del Museo del Louvre.", duration: "7 Días", difficulty: "Baja" },
+            { id: 9, category: "paises", categoryName: "Países - Italia", title: "Esplendores de Roma y Toscana", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&auto=format&fit=crop", desc: "Un viaje al corazón del Imperio Romano y los deslumbrantes horizontes cubiertos de viñedos en la Toscana.", duration: "8 Días", difficulty: "Baja" },
+            { id: 10, category: "paises", categoryName: "Países - Japón", title: "Contrastes de Tokio y Kioto", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&auto=format&fit=crop", desc: "Descubre templos ancestrales rodeados de misticismo junto a la vanguardia tecnológica del distrito de Shibuya.", duration: "10 Días", difficulty: "Media" },
+            { id: 11, category: "paises", categoryName: "Países - México", title: "Maravillas de México", image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&auto=format&fit=crop", desc: "Descubre la rica historia de las culturas prehispánicas, pasea por pueblos coloridos y relájate en playas turquesas.", duration: "9 Días", difficulty: "Baja - Media" }
         ];
 
         function crearTarjetaHTML(tour) {
@@ -775,7 +819,7 @@
 
 
         // ==========================================
-        // 9. GRÁFICAS DE ESTUDIOS DE MERCADO (Chart.js Optimizadas al máximo)
+        // 9. GRÁFICAS DE ESTUDIOS DE MERCADO (Chart.js)
         // ==========================================
         document.addEventListener('DOMContentLoaded', function() {
             Chart.defaults.color = '#555';
@@ -795,7 +839,7 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    animation: false, // Desactivado para evitar picos pesados de procesamiento inicial
+                    animation: false, 
                     plugins: { legend: { position: 'right' } }
                 }
             });
