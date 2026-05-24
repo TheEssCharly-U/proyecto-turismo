@@ -135,7 +135,7 @@
         .feature h3 { color: var(--secondary-color); margin-bottom: 15px; font-size: 1.4rem; }
         .feature p { color: #666; font-size: 1rem; line-height: 1.6; }
 
-        /* Estudio de Mercado */
+        /* Estudio de Mercado y Encuesta */
         #estudio-mercado { padding: 100px 20px; background-color: var(--light-bg); text-align: center; }
         #estudio-mercado h2 { margin-bottom: 20px; color: var(--primary-color); font-size: 2.8rem; }
         #estudio-mercado > p { margin-bottom: 50px; font-size: 1.1rem; color: #666; max-width: 800px; margin-left: auto; margin-right: auto;}
@@ -150,6 +150,36 @@
         .chart-wrapper:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .chart-wrapper h3 { color: var(--primary-color); font-size: 1.1rem; margin-bottom: 20px; min-height: 45px; display: flex; align-items: center; text-align: center; }
         .chart-canvas-container { width: 100%; height: 250px; position: relative; } 
+
+        .encuesta-cta {
+            margin-top: 50px;
+            padding: 10px 20px;
+        }
+        .encuesta-cta p {
+            font-size: 1.15rem;
+            color: #444;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .btn-encuesta {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 35px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 10px rgba(33, 78, 52, 0.05);
+        }
+        .btn-encuesta:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(33, 78, 52, 0.2);
+        }
 
         /* Carrusel Infinito de Tarjetas */
         #tours-destacados { padding: 100px 20px 60px; background-color: #fff; text-align: center; overflow: hidden; }
@@ -195,7 +225,6 @@
         .tours-grid .card { width: 100%; } 
         .tours-grid .card img { height: 200px; }
 
-        /* Estilos de la nueva sección CTA hacia el catálogo */
         .ver-catalogo-cta {
             margin-top: 40px;
             padding: 20px;
@@ -439,6 +468,13 @@
                     </div>
 
                 </div>
+
+                <div class="encuesta-cta reveal">
+                    <p>¡Tu opinión es muy importante para nosotros! Ayúdanos respondiendo este breve cuestionario:</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZVwRG9-DQczTuWQnbztl23dBk8OcuZHI_zJVeBhGTTOPY5w/viewform?usp=preview" target="_blank" rel="noopener noreferrer" class="btn-encuesta">
+                        Haz click para participar
+                    </a>
+                </div>
             </section>
 
             <section id="tours-destacados">
@@ -524,10 +560,10 @@
             </div>
             
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1GMnfik4uE/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/a888is?igsh=djhxeGxuYmI5Nzd2&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://youtube.com/@andispreciado?si=4GQ-NmEFqkiz8YXB" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@exedeidandis?_r=1&_t=ZS-96dc6Sv6zJP" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
         <p class="copyright">© 2026 Turismo Creativo. Todos los derechos reservados.</p>
@@ -672,7 +708,7 @@
         function startTimer() { timer = setInterval(() => { slideIndex++; showSlides(slideIndex); }, 5000); }
         startTimer();
 
-        // 4. BASE DE DATOS DE TOURS - MODIFICADO CON IMÁGENES REALES Y EN ALTA RESOLUCIÓN DE CADA LUGAR/ACTIVIDAD
+        // 4. BASE DE DATOS DE TOURS CON IMÁGENES ALUSIVAS REALES
         const toursData = [
             { id: 0, category: "naturaleza", categoryName: "Naturaleza", title: "Ruta de la Naturaleza", image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&auto=format&fit=crop", desc: "Escapa del ruido de la ciudad y adéntrate en los paisajes más verdes y puros.", duration: "6 horas", difficulty: "Baja - Media" },
             { id: 1, category: "cultura", categoryName: "Cultura", title: "Pueblos Mágicos", image: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=800&auto=format&fit=crop", desc: "Un recorrido cultural y gastronómico por las calles empedradas más pintorescas.", duration: "Día completo", difficulty: "Baja" },
