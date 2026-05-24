@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Variables y Reseteo */
+        /* Variables y Reseteo - Tonos Verdes */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --light-bg: #f4f4f4;
+            --primary-color: #214e34; /* Verde oscuro elegante */
+            --secondary-color: #4caf50; /* Verde brillante/naturaleza */
+            --light-bg: #f4f9f5; /* Fondo con un muy ligero tono verdoso */
             --text-color: #333;
         }
         * {
@@ -167,7 +167,7 @@
         .badge {
             display: inline-block; background: var(--secondary-color); color: white; padding: 6px 12px;
             border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; align-self: flex-start;
-            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
         }
         .ver-mas { display: inline-block; margin-top: 20px; color: var(--secondary-color); font-weight: bold; transition: 0.3s; }
         .card:hover .ver-mas { color: var(--primary-color); transform: translateX(5px); }
@@ -180,6 +180,8 @@
         /* Comentarios y Contacto */
         #comentarios { padding: 100px 20px; max-width: 100%; background-color: var(--light-bg); text-align: center; }
         .comentarios-inner { max-width: 1000px; margin: 0 auto; }
+        #comentarios h2 { color: var(--primary-color); font-size: 2.8rem; margin-bottom: 20px; }
+        
         .add-comment-section { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px; }
         .add-comment-section h3 { color: var(--primary-color); margin-bottom: 20px; font-size: 1.8rem; }
         .comments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
@@ -194,12 +196,12 @@
 
         .form-container { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
         .form-container input, .form-container textarea { padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border 0.3s; }
-        .form-container input:focus, .form-container textarea:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 8px rgba(52, 152, 219, 0.2); }
+        .form-container input:focus, .form-container textarea:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 8px rgba(76, 175, 80, 0.2); }
         .form-container button { 
             padding: 18px; background-color: var(--secondary-color); color: white; border: none; 
             border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; transition: all 0.3s ease; 
         }
-        .form-container button:hover { background-color: #2980b9; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4); }
+        .form-container button:hover { background-color: #388e3c; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); }
 
         #contacto { padding: 100px 20px; background-color: var(--primary-color); color: white; text-align: center; position: relative; }
         #contacto h2 { font-size: 2.5rem; margin-bottom: 15px; }
@@ -216,8 +218,8 @@
             background: white; border: 2px solid var(--secondary-color); color: var(--secondary-color);
             padding: 12px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: all 0.3s ease;
         }
-        .filter-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
-        .filter-btn.active { background: var(--secondary-color); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); transform: translateY(-3px); }
+        .filter-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); }
+        .filter-btn.active { background: var(--secondary-color); color: white; box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); transform: translateY(-3px); }
 
         .tours-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 35px;
@@ -242,25 +244,30 @@
         .modal-body { padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; }
         .modal-info { flex: 1 1 300px; }
         .modal-info h2 { color: var(--primary-color); margin-bottom: 20px; font-size: 2rem; }
-        .modal-info p { line-height: 1.8; color: #555; margin-bottom: 20px; font-size: 1.1rem; }
-        .modal-booking { flex: 1 1 300px; background: #f8fbff; padding: 30px; border-radius: 12px; border: 1px solid #e1f0ff; }
+        .modal-info p { line-height: 1.8; color: #555; margin-bottom: 15px; font-size: 1.1rem; }
+        .modal-info .precio-detalle { color: var(--secondary-color); font-size: 1.3rem; margin-top: 15px; }
+        .modal-booking { flex: 1 1 300px; background: #f2fbf4; padding: 30px; border-radius: 12px; border: 1px solid #d4edda; }
         .modal-booking h3 { margin-bottom: 20px; color: var(--primary-color); font-size: 1.5rem;}
         .booking-form { display: flex; flex-direction: column; gap: 15px; }
         .booking-form label { font-weight: bold; font-size: 0.95rem; color: var(--primary-color); }
         .booking-form input[type="date"], .booking-form select { padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; transition: 0.3s;}
         .booking-form input[type="date"]:focus, .booking-form select:focus { outline: none; border-color: var(--secondary-color); }
-        .btn-reservar {
-            background-color: #e1f0ff; color: #000; padding: 18px 25px; border-radius: 8px;
-            font-size: 1.1rem; cursor: pointer; font-weight: bold; border: none; transition: all 0.3s; margin-top: 15px;
-        }
-        .btn-reservar:hover { background-color: #b9d8ff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(185, 216, 255, 0.6); }
+        
+        .total-box { background: white; padding: 15px; border-radius: 8px; text-align: center; font-size: 1.2rem; border: 2px dashed #c3e6cb; margin-top: 10px; color: var(--primary-color); }
+        .total-box span { font-size: 1.5rem; font-weight: bold; color: var(--secondary-color); }
 
-        /* Footer */
-        footer { background-color: #1a252f; color: white; text-align: center; padding: 60px 20px 30px; }
+        .btn-reservar {
+            background-color: #d4edda; color: #155724; padding: 18px 25px; border-radius: 8px;
+            font-size: 1.1rem; cursor: pointer; font-weight: bold; border: none; transition: all 0.3s; margin-top: 10px;
+        }
+        .btn-reservar:hover { background-color: #c3e6cb; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); }
+
+        /* Footer - CORREGIDO: Ahora usa la paleta verde principal */
+        footer { background-color: var(--primary-color); color: white; text-align: center; padding: 60px 20px 30px; }
         .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; margin-bottom: 40px; }
         
         .contact-info p, .contact-info a { font-size: 1.05rem; margin: 12px 0; color: #ccc; line-height: 1.5; text-decoration: none; display: block; transition: color 0.3s ease; }
-        .contact-info a:hover { color: var(--secondary-color); }
+        .contact-info a:hover { color: #a5d6a7; }
         .contact-info i { color: var(--secondary-color); margin-right: 12px; font-size: 1.2rem; width: 20px; text-align: center; }
         
         .social-links { display: flex; justify-content: center; gap: 20px; }
@@ -269,8 +276,8 @@
             display: flex; align-items: center; justify-content: center; border-radius: 50%; 
             font-size: 1.2rem; transition: all 0.3s ease; text-decoration: none;
         }
-        .social-links a:hover { background: var(--secondary-color); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
-        footer > p.copyright { color: #888; font-size: 0.95rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; max-width: 800px; margin: 0 auto; }
+        .social-links a:hover { background: var(--secondary-color); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); }
+        footer > p.copyright { color: #a5d6a7; font-size: 0.95rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; max-width: 800px; margin: 0 auto; opacity: 0.8; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -284,7 +291,7 @@
             .hamburger { display: block; }
             header { padding: 15px 20px; }
             header.scrolled, header.solid-header { padding: 15px 20px; }
-            #nuestra-vision h2, #tours-destacados h2, #estudio-mercado h2 { font-size: 2.2rem; }
+            #nuestra-vision h2, #tours-destacados h2, #estudio-mercado h2, #comentarios h2 { font-size: 2.2rem; }
             .slider-overlay h1 { font-size: 2.8rem; }
             .chart-wrapper { width: 100%; max-width: 350px; }
         }
@@ -327,7 +334,7 @@
             <section id="nuestra-vision">
                 <div class="vision-content">
                     <h2 class="reveal">Nuestra Visión</h2>
-                    <p class="reveal delay-1">En <strong>Turismo Creativo</strong> no solo organizamos viajes; diseñamos experiencias transformadoras. Nos diferencia nuestra pasión por conectar a los viajeros con la esencia más auténtica de cada destino, promoviendo un turismo responsable, inmersivo y lleno de originalidad.</p>
+                    <p class="reveal delay-1">En <strong>Turismo Creativo</strong> no solo organizamos viajes; diseñamos experiences transformadoras. Nos diferencia nuestra pasión por conectar a los viajeros con la esencia más auténtica de cada destino, promoviendo un turismo responsable, inmersivo y lleno de originalidad.</p>
                     
                     <div class="vision-features">
                         <div class="feature reveal delay-1">
@@ -459,12 +466,12 @@
                 <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
-        <p class="copyright">&copy; 2026 Turismo Creativo. Todos los derechos reservados.</p>
+        <p class="copyright">© 2026 Turismo Creativo. Todos los derechos reservados.</p>
     </footer>
 
     <div id="tourModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            <span class="close-btn" onclick="cerrarModal()">×</span>
             <div class="modal-header">
                 <img id="modal-img" src="" alt="Imagen del Tour">
             </div>
@@ -474,6 +481,7 @@
                     <p id="modal-desc">Descripción detallada</p>
                     <p><strong>Duración:</strong> <span id="modal-duration"></span></p>
                     <p><strong>Dificultad:</strong> <span id="modal-difficulty"></span></p>
+                    <p class="precio-detalle"><strong>Precio por persona:</strong> $<span id="modal-precio-base">0</span> MXN</p>
                 </div>
                 <div class="modal-booking">
                     <h3>Solicitar Reserva</h3>
@@ -489,13 +497,19 @@
                             <option value="03:30 PM">03:30 PM - Tarde</option>
                         </select>
                         <label>Número de personas:</label>
-                        <select id="personas-reserva" required>
-                            <option value="1">1 Persona</option>
+                        <select id="personas-reserva" required onchange="calcularTotal()">
+                            <option value="1" selected>1 Persona</option>
                             <option value="2">2 Personas</option>
                             <option value="3">3 Personas</option>
                             <option value="4">4 Personas</option>
-                            <option value="5+">5 o más (Grupo)</option>
+                            <option value="5">5 o más (Grupo)</option>
                         </select>
+
+                        <div class="total-box">
+                            Total Estimado: <br>
+                            <span>$<span id="modal-precio-total">0</span> MXN</span>
+                        </div>
+
                         <button type="submit" class="btn-reservar">Solicitar Reserva</button>
                     </form>
                 </div>
@@ -584,7 +598,6 @@
             { id: 3, category: "cultura", categoryName: "Cultura", title: "Ruta Arqueológica", image: "https://picsum.photos/800/400?random=13", desc: "Viaja en el tiempo. Visitaremos zonas arqueológicas y ruinas antiguas.", duration: "5 horas", difficulty: "Baja" },
             { id: 4, category: "naturaleza", categoryName: "Naturaleza", title: "Avistamiento de Aves", image: "https://picsum.photos/800/400?random=14", desc: "Recorrido matutino en silencio por la reserva natural. Incluye binoculares.", duration: "3 horas", difficulty: "Baja" },
             { id: 5, category: "aventura", categoryName: "Aventura", title: "Escalada en Roca", image: "https://picsum.photos/800/400?random=15", desc: "Conquista las paredes de piedra natural más impresionantes.", duration: "6 horas", difficulty: "Alta" },
-            { id: 6, category: "cultura", categoryName: "Cultura", title: "Tour Gastronómico", image: "https://picsum.photos/800/400?random=16", desc: "Prueba los verdaderos sabores visitando mercados y cocinas tradicionales.", duration: "4 horas", difficulty: "Baja" },
             { id: 7, category: "naturaleza", categoryName: "Naturaleza", title: "Senderismo Nocturno", image: "https://picsum.photos/800/400?random=17", desc: "Camina bajo las estrellas guiado por expertos, aprende sobre constelaciones.", duration: "3 horas", difficulty: "Media" },
             { id: 8, category: "paises", categoryName: "Países - Francia", title: "Luces y Arte de París", image: "https://picsum.photos/800/400?random=20", desc: "Camina por la mítica Torre Eiffel, navega el Sena y adéntrate en las obras maestras del Museo del Louvre.", duration: "7 Días", difficulty: "Baja" },
             { id: 9, category: "paises", categoryName: "Países - Italia", title: "Esplendores de Roma y Toscana", image: "https://picsum.photos/800/400?random=21", desc: "Un viaje al corazón del Imperio Romano y los deslumbrantes horizontes cubiertos de viñedos en la Toscana.", duration: "8 Días", difficulty: "Baja" },
@@ -600,7 +613,7 @@
                         <span class="badge">${tour.categoryName}</span>
                         <h3>${tour.title}</h3>
                         <p>${tour.desc}</p>
-                        <span class="ver-mas">Ver detalles y solicitar reserva &rarr;</span>
+                        <span class="ver-mas">Ver detalles y solicitar reserva →</span>
                     </div>
                 </div>
             `;
@@ -642,8 +655,18 @@
             });
         });
 
-        // 7. LÓGICA DEL MODAL ANIMADO
+        // 7. LÓGICA DEL MODAL ANIMADO Y CÁLCULO DE PRECIOS
         const modal = document.getElementById("tourModal");
+        let precioActualTour = 0;
+
+        function calcularTotal() {
+            const selectPersonas = document.getElementById("personas-reserva");
+            const cantidad = parseInt(selectPersonas.value) || 1;
+            const total = precioActualTour * cantidad;
+            
+            document.getElementById("modal-precio-total").textContent = total.toLocaleString('es-MX');
+        }
+
         function abrirModalTour(id) {
             const tour = toursData.find(t => t.id === id);
             document.getElementById("modal-img").src = tour.image;
@@ -653,13 +676,20 @@
             document.getElementById("modal-difficulty").textContent = tour.difficulty;
             document.getElementById("reserva-tour-nombre").value = tour.title;
             
+            precioActualTour = Math.floor(Math.random() * (3500 - 800 + 1)) + 800;
+            document.getElementById("modal-precio-base").textContent = precioActualTour.toLocaleString('es-MX');
+
             document.querySelector('.booking-form').reset();
             const hoy = new Date().toISOString().split("T")[0];
             document.getElementById("fecha-reserva").setAttribute("min", hoy);
+            document.getElementById("personas-reserva").value = "1";
+            
+            calcularTotal();
             
             modal.style.display = "block";
             setTimeout(() => modal.classList.add("show"), 10);
         }
+        
         function cerrarModal() { 
             modal.classList.remove("show");
             setTimeout(() => modal.style.display = "none", 300); 
@@ -669,7 +699,10 @@
         function confirmarReserva(event) {
             event.preventDefault();
             const tourNombre = document.getElementById("reserva-tour-nombre").value;
-            alert(`¡Solicitud recibida con éxito!\n\nHemos recibido tu petición para:\n- Tour: ${tourNombre}\n\nNos pondremos en contacto contigo a la brevedad para afinar detalles.`);
+            const personas = document.getElementById("personas-reserva").value;
+            const totalTexto = document.getElementById("modal-precio-total").textContent;
+            
+            alert(`¡Solicitud recibida con éxito!\n\nHemos recibido tu petición para:\n- Tour: ${tourNombre}\n- Personas: ${personas}\n- Total Aproximado: $${totalTexto} MXN\n\nNos pondremos en contacto contigo a la brevedad para afinar detalles y confirmar fechas.`);
             cerrarModal();
         }
 
@@ -702,7 +735,7 @@
 
 
         // ==========================================
-        // 9. GRÁFICAS DE ESTUDIOS DE MERCADO (Chart.js)
+        // 9. GRÁFICAS DE ESTUDIOS DE MERCADO (Chart.js) - CORREGIDO: Colores contrastantes
         // ==========================================
         document.addEventListener('DOMContentLoaded', function() {
             Chart.defaults.color = '#555';
@@ -715,7 +748,7 @@
                     labels: ['A: Muy útil', 'B: Algo útil'],
                     datasets: [{
                         data: [92.9, 7.1],
-                        backgroundColor: ['#3065bf', '#d83e27'],
+                        backgroundColor: ['#e65100', '#2e7d32'], /* Naranja quemado y verde oscuro */
                         hoverOffset: 4
                     }]
                 },
@@ -734,7 +767,7 @@
                     datasets: [{
                         label: 'Personas (14 total)',
                         data: [14, 3, 0, 0],
-                        backgroundColor: '#4acae0',
+                        backgroundColor: '#ff9100', /* Coral/Naranja brillante contrastante */
                         borderRadius: 3
                     }]
                 },
@@ -754,7 +787,7 @@
                     labels: ['D: 9-10 (Me encantaría)', 'C: 7-8 (Mucho interés)', 'B: 4-6 (Medio interés)'],
                     datasets: [{
                         data: [57.1, 28.6, 14.3],
-                        backgroundColor: ['#1e8c25', '#f29c1f', '#d93925'],
+                        backgroundColor: ['#2e7d32', '#ffb74d', '#e53935'], /* Verde, Amarillo/Naranja suave y Rojo vibrante */
                         hoverOffset: 4
                     }]
                 },
